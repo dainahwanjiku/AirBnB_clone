@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 BaseModel that defines all common attributes/methods for other classes.
 """
 
@@ -10,7 +10,7 @@ from datetime import datetime
 
 
 class BaseModel:
-    """ 
+    """
     base model
     """
 
@@ -49,6 +49,7 @@ class BaseModel:
         """return the string formated message when instance is called"""
         clName = self.__class__.__name__
         return "[{}] ({}) {}".format(clName, self.id, self.__dict__)
+
 
 class BaseModelEncoder(JSONEncoder):
     """JSON Encoder for BaseModel
