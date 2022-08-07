@@ -5,12 +5,32 @@ console
 
 import cmd
 import modules
+import re
+from shlex import split
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-     """ cmd clone"""
+    """ cmd clone"""
     intro = 'Welcome to the Airbnb console. Type help or ? to list commands.\n'
-    prompt = '(hbnb) '
+    prompt = '(hbnb)'
+
+     __classes = {
+             "BaseModel",
+             "User",
+             "State",
+             "City",
+             "Place",
+             "Amenity",
+             "Review"
+    }
 
     def __init__(self, completekey='tab', stdin=None, stdout=None):
         """init method"""
@@ -46,7 +66,6 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             print(e)
 
-
     def do_show(self, arg):
         """
         Prints the string representation of an instance
@@ -61,7 +80,6 @@ class HBNBCommand(cmd.Cmd):
             model = models.storage.find(model_name, model_id)
             print(model.__str__())
 
-
         except Exception as e:
 
             if arg.count(' ') == 0:
@@ -70,7 +88,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** too many arguments (2 arguments required)**")
             else:
                 print(e)
-
 
     def destroy:
         """
@@ -96,7 +113,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** too many arguments (2 arguments required)**")
             else:
                 print(e)
-
 
     def all(self, arg):
         """
